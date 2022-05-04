@@ -1,0 +1,26 @@
+repositories:
+  openhrp3:
+    type: git
+    url: https://github.com/fkanehiro/openhrp3.git
+  hrpsys-base:
+    type: git
+    url: https://github.com/fkanehiro/hrpsys-base.git
+  rtmros_common:
+    type: git
+    url: https://github.com/start-jsk/rtmros_common.git
+  rtmros_tutorials:
+    type: git
+    url: https://github.com/start-jsk/rtmros_tutorials.git
+  rtmros_choreonoid:
+    type: git
+    url: https://github.com/start-jsk/rtmros_choreonoid.git
+  jsk_control:
+    type: git
+    url: https://github.com/jsk-ros-pkg/jsk_control.git
+  choreonoid:
+    type: git
+    url: https://github.com/choreonoid/choreonoid.git
+    version: release-1.7
+  jsk_robot:
+    type: git
+    url: https://github.com/jsk-ros-pkg/jsk_robot.git
