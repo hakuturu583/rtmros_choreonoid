@@ -1,9 +1,22 @@
-cmake_minimum_required(VERSION 2.8.3)
+if($ENV{ROS_VERSION} EQUAL 1)
+  cmake_minimum_required(VERSION 2.8.3)
+endif()
+
+if($ENV{ROS_VERSION} EQUAL 2)
+  cmake_minimum_required(VERSION 3.5)
+endif()
+
 project(jvrc_models)
 
-find_package(catkin REQUIRED COMPONENTS)
+if($ENV{ROS_VERSION} EQUAL 1)
+  find_package(catkin REQUIRED COMPONENTS)
+  catkin_package(CFG_EXTRAS jvrc_models-extras.cmake)
+endif()
 
-catkin_package(CFG_EXTRAS jvrc_models-extras.cmake)
+if($ENV{ROS_VERSION} EQUAL 2)
+  find_package(ament_cmake_auto REQUIRED)
+  ament_auto_find_build_dependencies()
+endif()
 
 if (EXISTS ${PROJECT_SOURCE_DIR}/model)
   execute_process(COMMAND git pull
@@ -15,4 +28,8 @@ if (EXISTS ${PROJECT_SOURCE_DIR}/model)
 else ()
   execute_process(COMMAND git clone https://github.com/jvrc/model.git
     WORKING_DIRECTORY ${PROJECT_SOURCE_DIR})
+endif()
+
+if($ENV{ROS_VERSION} EQUAL 2)
+  ament_auto_package()
 endif()
